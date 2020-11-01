@@ -1,0 +1,14 @@
+CREATE VIEW db_student_assignments_view AS
+SELECT db_student_students.id AS id, db_student_students.name AS student_name, db_student_students.photo AS photo,db_student_students.guardian_id AS guardian_id,
+db_student_students.date_of_birth AS date_of_birth, db_student_students.gender AS gender,db_student_students.blood_group,
+db_student_students.religion AS religion,db_student_students.current_address AS current_address,db_student_students.permanent_address AS permanent_address,
+db_student_students.registration_no AS registration_no,db_student_students.extra_curricular_activities AS extra_curricular_acctivities,
+db_student_students.remarks AS remarks ,db_student_assignments.class_id AS class_id,db_academic_classes.name AS class_name,
+db_student_assignments.section_id AS section_id,db_academic_sections.name AS section_name		
+FROM db_student_assignments
+LEFT JOIN db_student_students
+ON db_student_assignments.student_id= db_student_students.id
+LEFT JOIN db_academic_classes
+ON db_student_assignments.class_id= db_academic_classes.id
+LEFT JOIN db_academic_sections
+ON db_student_assignments.section_id= db_academic_sections.id
